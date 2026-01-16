@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="dogV2.2.4.sep">
+  <joint name="FixedJoint" type="fixed">
+    <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+    <parent link="DOGV2_2_4_SLDASM"/>
+    <child link="DOGV2_2_4_SLDASM_base_link"/>
+  </joint>
+  <joint name="LF_Foot_joint" type="fixed">
+    <origin xyz="-0.1101253 -0.1907426 0.0165 " rpy="1.5707964 0. -1.5707963"/>
+    <parent link="DOGV2_2_4_SLDASM_LF_Knee_link"/>
+    <child link="DOGV2_2_4_SLDASM_LF_Foot_link"/>
+  </joint>
+  <joint name="LF_HipA_joint" type="revolute">
+    <origin xyz="0.16 0.0674995 0.063 " rpy="1.5707964 0. 1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_base_link"/>
+    <child link="DOGV2_2_4_SLDASM_LF_HipA_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="LF_HipF_joint" type="revolute">
+    <origin xyz="0.018001 -0. 0.048001" rpy="3.130749 1.5707927 3.130749 "/>
+    <parent link="DOGV2_2_4_SLDASM_LF_HipA_link"/>
+    <child link="DOGV2_2_4_SLDASM_LF_HipF_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-1.2217658" upper="0.8726683" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="LF_Knee_joint" type="revolute">
+    <origin xyz="0.1707434 -0.1222574 0.05 " rpy="0. -0. -0."/>
+    <parent link="DOGV2_2_4_SLDASM_LF_HipF_link"/>
+    <child link="DOGV2_2_4_SLDASM_LF_Knee_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-1.2217299" upper="0.69813" effort="25." velocity="49.9999973"/>
+  </joint>
+  <joint name="LR_Foot_joint" type="fixed">
+    <origin xyz="-0.1101253 -0.1907426 0.0165 " rpy="1.5707964 0. -1.5707965"/>
+    <parent link="DOGV2_2_4_SLDASM_LR_Knee_link"/>
+    <child link="DOGV2_2_4_SLDASM_LR_Foot_link"/>
+  </joint>
+  <joint name="LR_HipA_joint" type="revolute">
+    <origin xyz="-0.16 0.0674995 0.0629999" rpy="1.5707964 0. -1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_base_link"/>
+    <child link="DOGV2_2_4_SLDASM_LR_HipA_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="LR_HipF_joint" type="revolute">
+    <origin xyz="-0.018001 -0. 0.048001" rpy="3.130749 -1.5707927 -3.130749 "/>
+    <parent link="DOGV2_2_4_SLDASM_LR_HipA_link"/>
+    <child link="DOGV2_2_4_SLDASM_LR_HipF_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-1.2217305" upper="0.8726683" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="LR_Knee_joint" type="revolute">
+    <origin xyz="0.1707423 -0.1222573 0.05 " rpy="0. 0. 0."/>
+    <parent link="DOGV2_2_4_SLDASM_LR_HipF_link"/>
+    <child link="DOGV2_2_4_SLDASM_LR_Knee_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-1.2217299" upper="0.69813" effort="25." velocity="49.9999973"/>
+  </joint>
+  <joint name="RF_Foot_joint" type="fixed">
+    <origin xyz="0.1101253 -0.1907426 0.0165 " rpy="-1.5707964 0. -1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_RF_Knee_link"/>
+    <child link="DOGV2_2_4_SLDASM_RF_Foot_link"/>
+  </joint>
+  <joint name="RF_HipA_joint" type="revolute">
+    <origin xyz="0.16 -0.0674995 0.0629999" rpy="1.5707964 0. 1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_base_link"/>
+    <child link="DOGV2_2_4_SLDASM_RF_HipA_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="RF_HipF_joint" type="revolute">
+    <origin xyz="-0.018001 -0. 0.048001" rpy="3.1305087 -1.5707928 -3.1305087"/>
+    <parent link="DOGV2_2_4_SLDASM_RF_HipA_link"/>
+    <child link="DOGV2_2_4_SLDASM_RF_HipF_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.8726999" upper="1.2217342" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="RF_Knee_joint" type="revolute">
+    <origin xyz="-0.17074 -0.12226 0.05 " rpy="0.0000002 -0. 0. "/>
+    <parent link="DOGV2_2_4_SLDASM_RF_HipF_link"/>
+    <child link="DOGV2_2_4_SLDASM_RF_Knee_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.6981312" upper="1.2217287" effort="25." velocity="49.9999973"/>
+  </joint>
+  <joint name="RR_Foot_joint" type="fixed">
+    <origin xyz="0.1101301 -0.19074 0.0165 " rpy="-1.5707964 -0.0000036 -1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_RR_Knee_link"/>
+    <child link="DOGV2_2_4_SLDASM_RR_Foot_link"/>
+  </joint>
+  <joint name="RR_HipA_joint" type="revolute">
+    <origin xyz="-0.16 -0.0674995 0.063 " rpy="1.5707964 0. -1.5707964"/>
+    <parent link="DOGV2_2_4_SLDASM_base_link"/>
+    <child link="DOGV2_2_4_SLDASM_RR_HipA_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.7853982" upper="0.7853982" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="RR_HipF_joint" type="revolute">
+    <origin xyz="0.018001 -0. 0.048001" rpy="3.1305087 1.5707928 3.1305087"/>
+    <parent link="DOGV2_2_4_SLDASM_RR_HipA_link"/>
+    <child link="DOGV2_2_4_SLDASM_RR_HipF_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.8726999" upper="1.2217305" effort="17." velocity="49.9999973"/>
+  </joint>
+  <joint name="RR_Knee_joint" type="revolute">
+    <origin xyz="-0.1707423 -0.1222574 0.05 " rpy="0.0000002 0. -0. "/>
+    <parent link="DOGV2_2_4_SLDASM_RR_HipF_link"/>
+    <child link="DOGV2_2_4_SLDASM_RR_Knee_link"/>
+    <axis xyz="0. 0. 1."/>
+    <limit lower="-0.6981312" upper="1.2217287" effort="25." velocity="49.9999973"/>
+  </joint>
+  <link name="DOGV2_2_4_SLDASM"/>
+  <link name="DOGV2_2_4_SLDASM_LF_Foot_link">
+    <inertial>
+      <origin xyz="-0.000345 0.000003 -0.001836" rpy="0. 0. 0."/>
+      <mass value="0.038528"/>
+      <inertia ixx="0.0000084" ixy="-0." ixz="0.0000002" iyy="0.0000079" iyz="-0." izz="0.0000085"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. 0. 0." rpy="-1.5467145 -1.5698234 1.5467145"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Foot_link_visuals_LF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. 0. 0." rpy="-1.5467145 -1.5698234 1.5467145"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Foot_link_collisions_LF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. 0. 0." rpy="-1.5467145 -1.5698234 1.5467145"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Foot_link_collisions_LF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LF_HipA_link">
+    <inertial>
+      <origin xyz="0.002621 0.000052 0.046852" rpy="0. 0. 0."/>
+      <mass value="0.452382"/>
+      <inertia ixx="0.0005587" ixy="0.0000003" ixz="-0.0000007" iyy="0.000347" iyz="-0.0000001" izz="0.000309"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipA_link_visuals_LF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipA_link_collisions_LF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipA_link_collisions_LF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LF_HipF_link">
+    <inertial>
+      <origin xyz="0.033261 -0.016881 0.050217" rpy="0. 0. 0."/>
+      <mass value="0.779164"/>
+      <inertia ixx="0.0015974" ixy="0.0015051" ixz="-0.0004429" iyy="0.0032684" iyz="0.0002247" izz="0.0043304"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. -0. -0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipF_link_visuals_LF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. -0. -0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipF_link_collisions_LF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. -0. -0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_HipF_link_collisions_LF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LF_Knee_link">
+    <inertial>
+      <origin xyz="-0.055107 -0.080197 0.016515" rpy="0. 0. 0."/>
+      <mass value="0.121558"/>
+      <inertia ixx="0.0005493" ixy="-0.0003334" ixz="-0.0000001" iyy="0.0002237" iyz="-0.0000002" izz="0.0007696"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Knee_link_visuals_LF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Knee_link_collisions_LF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LF_Knee_link_collisions_LF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LR_Foot_link">
+    <inertial>
+      <origin xyz="-0.000345 0.000003 -0.001836" rpy="0. 0. 0."/>
+      <mass value="0.038528"/>
+      <inertia ixx="0.0000084" ixy="-0." ixz="0.0000002" iyy="0.0000079" iyz="-0." izz="0.0000085"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. 0.0000001 -0. " rpy="1.5948781 -1.5698234 -1.5948781"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Foot_link_visuals_LR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. 0.0000001 -0. " rpy="1.5948781 -1.5698234 -1.5948781"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Foot_link_collisions_LR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. 0.0000001 -0. " rpy="1.5948781 -1.5698234 -1.5948781"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Foot_link_collisions_LR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LR_HipA_link">
+    <inertial>
+      <origin xyz="-0.002621 -0.000052 0.046852" rpy="0. 0. 0."/>
+      <mass value="0.452382"/>
+      <inertia ixx="0.0005587" ixy="0.0000003" ixz="0.0000007" iyy="0.000347" iyz="0.0000001" izz="0.000309"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipA_link_visuals_LR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipA_link_collisions_LR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipA_link_collisions_LR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LR_HipF_link">
+    <inertial>
+      <origin xyz="0.03326 -0.016881 0.050217" rpy="0. 0. 0."/>
+      <mass value="0.779164"/>
+      <inertia ixx="0.0015974" ixy="0.0015051" ixz="-0.0004429" iyy="0.0032684" iyz="0.0002247" izz="0.0043304"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipF_link_visuals_LR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipF_link_collisions_LR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. -0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_HipF_link_collisions_LR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_LR_Knee_link">
+    <inertial>
+      <origin xyz="-0.055107 -0.080197 0.016515" rpy="0. 0. 0."/>
+      <mass value="0.121558"/>
+      <inertia ixx="0.0005493" ixy="-0.0003334" ixz="-0.0000001" iyy="0.0002237" iyz="-0.0000002" izz="0.0007696"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Knee_link_visuals_LR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Knee_link_collisions_LR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_LR_Knee_link_collisions_LR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RF_Foot_link">
+    <inertial>
+      <origin xyz="-0.000345 0.000003 -0.001836" rpy="0. 0. 0."/>
+      <mass value="0.038528"/>
+      <inertia ixx="0.0000084" ixy="-0." ixz="0.0000002" iyy="0.0000079" iyz="-0." izz="0.0000085"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="1.5707964 -1.5698234 -1.5707965"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Foot_link_visuals_RF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="1.5707964 -1.5698234 -1.5707965"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Foot_link_collisions_RF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. -0. -0." rpy="1.5707964 -1.5698234 -1.5707965"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Foot_link_collisions_RF_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RF_HipA_link">
+    <inertial>
+      <origin xyz="-0.002621 -0.000052 0.046852" rpy="0. 0. 0."/>
+      <mass value="0.452382"/>
+      <inertia ixx="0.0005587" ixy="0.0000003" ixz="0.0000007" iyy="0.000347" iyz="0.0000001" izz="0.000309"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipA_link_visuals_RF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipA_link_collisions_RF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipA_link_collisions_RF_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RF_HipF_link">
+    <inertial>
+      <origin xyz="-0.033247 -0.016939 0.050217" rpy="0. 0. 0."/>
+      <mass value="0.779164"/>
+      <inertia ixx="0.0015958" ixy="-0.0015036" ixz="0.0004432" iyy="0.0032692" iyz="0.0002236" izz="0.0043296"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. -0. 0." rpy="0.0000002 -0. 0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipF_link_visuals_RF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. -0. 0." rpy="0.0000002 -0. 0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipF_link_collisions_RF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. -0. 0." rpy="0.0000002 -0. 0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_HipF_link_collisions_RF_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RF_Knee_link">
+    <inertial>
+      <origin xyz="0.055107 -0.080197 0.016485" rpy="0. 0. 0."/>
+      <mass value="0.121558"/>
+      <inertia ixx="0.0005493" ixy="0.0003334" ixz="-0.0000001" iyy="0.0002237" iyz="0.0000002" izz="0.0007696"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Knee_link_visuals_RF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Knee_link_collisions_RF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. -0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RF_Knee_link_collisions_RF_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RR_Foot_link">
+    <inertial>
+      <origin xyz="-0.000345 0.000003 -0.001836" rpy="0. 0. 0."/>
+      <mass value="0.038528"/>
+      <inertia ixx="0.0000084" ixy="-0." ixz="0.0000002" iyy="0.0000079" iyz="-0." izz="0.0000085"/>
+    </inertial>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="-1.5710428 -1.5703164 1.5705532"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Foot_link_visuals_RR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0. -0. -0." rpy="-1.5710428 -1.5703164 1.5705532"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Foot_link_collisions_RR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0. -0. -0." rpy="-1.5710428 -1.5703164 1.5705532"/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Foot_link_collisions_RR_Foot_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RR_HipA_link">
+    <inertial>
+      <origin xyz="0.002621 0.000052 0.046852" rpy="0. 0. 0."/>
+      <mass value="0.452382"/>
+      <inertia ixx="0.0005587" ixy="0.0000003" ixz="-0.0000007" iyy="0.000347" iyz="-0.0000001" izz="0.000309"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipA_link_visuals_RR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipA_link_collisions_RR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. -0. -0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipA_link_collisions_RR_HipA_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RR_HipF_link">
+    <inertial>
+      <origin xyz="-0.033246 -0.01694 0.050217" rpy="0. 0. 0."/>
+      <mass value="0.779164"/>
+      <inertia ixx="0.0015958" ixy="-0.0015036" ixz="0.0004432" iyy="0.0032692" iyz="0.0002236" izz="0.0043296"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. -0. 0." rpy="0.0000002 0. -0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipF_link_visuals_RR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. -0. 0." rpy="0.0000002 0. -0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipF_link_collisions_RR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. -0. 0." rpy="0.0000002 0. -0. "/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_HipF_link_collisions_RR_HipF_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_RR_Knee_link">
+    <inertial>
+      <origin xyz="0.055107 -0.080197 0.016485" rpy="0. 0. 0."/>
+      <mass value="0.121558"/>
+      <inertia ixx="0.0005493" ixy="0.0003334" ixz="-0.0000001" iyy="0.0002237" iyz="0.0000002" izz="0.0007696"/>
+    </inertial>
+    <visual>
+      <origin xyz="0.0000001 0. -0. " rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Knee_link_visuals_RR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0.0000001 0. -0. " rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Knee_link_collisions_RR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0000001 0. -0. " rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_RR_Knee_link_collisions_RR_Knee_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="DOGV2_2_4_SLDASM_base_link">
+    <inertial>
+      <origin xyz="0.003073 -0.000011 0.058211" rpy="0. 0. 0."/>
+      <mass value="5.2764368"/>
+      <inertia ixx="0.0328421" ixy="0.0000334" ixz="-0.0072546" iyy="0.1037622" iyz="0.0000334" izz="0.1165384"/>
+    </inertial>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_base_link_visuals_base_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_base_link_collisions_base_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0. 0. 0." rpy="0. 0. 0."/>
+      <geometry>
+        <mesh filename="meshes/DOGV2_2_4_SLDASM_base_link_collisions_base_link_mesh.obj" scale="1. 1. 1."/>
+      </geometry>
+    </collision>
+  </link>
+</robot>
