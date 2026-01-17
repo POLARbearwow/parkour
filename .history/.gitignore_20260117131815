@@ -1,0 +1,7 @@
+logs
+outputs
+__cache__
+__pycache__
+*.pyc
+.vscode
+REPLACEMENT_CHECKLIST.md
