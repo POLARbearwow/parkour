@@ -89,7 +89,7 @@ class CustomRobotCfg(ArticulationCfg):
                 effort_limit=25.0,
                 saturation_effort=25.0,
                 velocity_limit=13.0,
-                stiffness= 25.0,
+                stiffness=25.0,
                 damping=0.5,
                 friction=0.0,
             ),

@@ -1,0 +1,38 @@
+{
+    "include": [
+        "parkour_isaaclab",
+        "parkour_tasks",
+        "scripts",
+        "parkour_test"
+    ],
+    "exclude": [
+        "**/__pycache__",
+        "**/.mypy_cache",
+        "**/node_modules",
+        "**/_isaac_sim",
+        "**/_compiler"
+    ],
+    "extraPaths": [
+        "/home/ares/IsaacLab/Isaaclab_Parkour",
+        "/home/ares/IsaacLab/source/isaaclab_tasks",
+        "/home/ares/IsaacLab/source/isaaclab_assets",
+        "/home/ares/IsaacLab/source/isaaclab_rl",
+        "/home/ares/IsaacLab/source/isaaclab_mimic",
+        "/home/ares/IsaacLab/source/isaaclab"
+    ],
+    "pythonVersion": "3.10",
+    "typeCheckingMode": "off",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "reportGeneralTypeIssues": false,
+    "reportOptionalMemberAccess": false,
+    "reportOptionalSubscript": false,
+    "reportPrivateImportUsage": false,
+    "reportUnknownMemberType": false,
+    "reportUnknownArgumentType": false,
+    "reportUnknownVariableType": false,
+    "reportUnknownParameterType": false,
+    "reportIncompatibleMethodOverride": false,
+    "reportIncompatibleVariableOverride": false,
+    "reportInconsistentConstructor": false
+}
