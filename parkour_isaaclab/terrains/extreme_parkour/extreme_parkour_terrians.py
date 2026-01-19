@@ -982,10 +982,11 @@ def parkour_slope_terrain(
     num_goals: int,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     """
-    侧向进入的斜坡地形：
+    正向斜坡地形（机器人需要爬坡）：
     - 机器人沿 x 方向前进
-    - 高度沿 y 方向线性变化（等高线与行走方向平行）
+    - 高度沿 x 方向线性变化（等高线与行走方向垂直）
     - 多个斜坡段在 x 方向依次排布，每段的斜率和长度都从范围中采样
+    - 机器人需要爬坡或下坡，而不是沿着等高线行走
     """
     width_pixels = int(cfg.size[0] / cfg.horizontal_scale)
     length_pixels = int(cfg.size[1] / cfg.horizontal_scale)
@@ -1024,7 +1025,8 @@ def parkour_slope_terrain(
 
     # 预先算一条“侧向斜坡”的高度 profile：z(y) = platform_height + slope * (y - mid_y)
     # 这里的 slope 是 “米/米”，需要转换到网格单位
-    ys = np.arange(length_pixels) - mid_y
+    # 当前高度（从平台高度开始，沿 x 方向变化）
+    current_height_grid = platform_height
 
     dis_x = platform_len
     goals = np.zeros((num_goals, 2))
@@ -1032,6 +1034,7 @@ def parkour_slope_terrain(
 
     # 起点 goal 在起始平台末端
     goals[0] = [platform_len - 1, mid_y]
+    goal_heights[0] = platform_height
 
     num_segments = max(1, num_goals - 2)
 
@@ -1042,37 +1045,50 @@ def parkour_slope_terrain(
         seg_len = np.random.randint(seg_len_min, seg_len_max)
         x_start = dis_x
         x_end = min(dis_x + seg_len, width_pixels)
+        actual_seg_len = x_end - x_start
 
-        # 采样一个斜率（左右倾斜可正可负）
+        # 采样一个斜率（正值为上坡，负值为下坡）
         raw_slope = np.random.uniform(
             slope_range[0], slope_range[1]
-        )  # 单位：m 高 / m 宽
+        )  # 单位：m 高 / m 宽（沿 x 方向）
         slope_grid = raw_slope * (
             cfg.horizontal_scale / cfg.vertical_scale
         )  # 转成“格高/格宽”
 
-        heights_profile = platform_height + slope_grid * ys
-        heights_profile = np.rint(heights_profile)
+        # 计算该段的起始和结束高度
+        start_height_grid = current_height_grid
+        end_height_grid = start_height_grid + slope_grid * actual_seg_len
+        end_height_grid = np.rint(end_height_grid)
 
-        # 该斜坡段内所有 x 都共享同一条 y 方向的线性 profile
-        height_field_raw[x_start:x_end, :] = heights_profile[np.newaxis, :]
+        # 在该段内，高度沿 x 方向线性变化
+        xs_in_segment = np.arange(actual_seg_len)
+        heights_in_segment = start_height_grid + slope_grid * xs_in_segment
+        heights_in_segment = np.rint(heights_in_segment)
 
-        # 在该段中间放一个目标点（高度取中线高度 = platform_height）
+        # 将该段的高度应用到整个 y 方向（保持 y 方向平坦）
+        for x_idx, height_val in enumerate(heights_in_segment):
+            height_field_raw[x_start + x_idx, :] = height_val
+
+        # 更新当前高度为段结束高度
+        current_height_grid = end_height_grid
+
+        # 在该段中间放一个目标点（高度取段中间高度）
         goal_idx = i + 1
         if goal_idx < num_goals - 1:
             seg_center_x = (x_start + x_end) // 2
+            seg_center_height = start_height_grid + slope_grid * (actual_seg_len / 2)
             goals[goal_idx] = [seg_center_x, mid_y]
-            goal_heights[goal_idx] = platform_height
+            goal_heights[goal_idx] = seg_center_height * cfg.vertical_scale
 
         dis_x = x_end
 
-    # 末尾加一段平平台
+    # 末尾加一段平平台（保持最后的高度）
     final_platform_start = min(dis_x, width_pixels - 1)
-    height_field_raw[final_platform_start:, :] = platform_height
+    height_field_raw[final_platform_start:, :] = current_height_grid
 
     final_dis_x = min(final_platform_start + seg_len_min, width_pixels - 1)
     goals[-1] = [final_dis_x, mid_y]
-    goal_heights[-1] = platform_height
+    goal_heights[-1] = current_height_grid * cfg.vertical_scale
 
     # 边界 padding + 粗糙度
     height_field_raw = padding_height_field_raw(height_field_raw, cfg)

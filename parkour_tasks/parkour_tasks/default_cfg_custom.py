@@ -117,7 +117,7 @@ CAMERA_USD_CFG = AssetBaseCfg(
     ),
     init_state=AssetBaseCfg.InitialStateCfg(
         pos=(0.31505, 0.00, 0.023),
-        rot=quat_from_euler_xyz_tuple(*tuple(torch.tensor([0, 1.57, -1.57]))),
+        rot=quat_from_euler_xyz_tuple(*tuple(torch.tensor([0, 1.92, -1.57]))),
     ),
 )
 ## DogV2 视角配置
