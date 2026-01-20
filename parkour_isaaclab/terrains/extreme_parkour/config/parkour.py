@@ -16,7 +16,7 @@ EXTREME_PARKOUR_TERRAINS_CFG = ParkourTerrainGeneratorCfg(
     curriculum=True,
     sub_terrains={
         "parkour_gap": ExtremeParkourGapTerrainCfg(
-            proportion=0.2,
+            proportion=0.15,
             apply_roughness=True,
             x_range=(0.8, 1.5),
             half_valid_width=(0.6, 1.2),
@@ -38,20 +38,29 @@ EXTREME_PARKOUR_TERRAINS_CFG = ParkourTerrainGeneratorCfg(
             hurdle_height_range="0.1+0.1*difficulty, 0.15+0.15*difficulty",
         ),
         "parkour_step": ExtremeParkourStepTerrainCfg(
-            proportion=0.2,
+            proportion=0.15,
             apply_roughness=True,
-            x_range=(0.3, 1.5),
+            x_range=(0.5, 0.8),
             half_valid_width=(0.5, 1),
-            step_height="0.1 + 0.35*difficulty",
+            step_height="0.15 + 0.15*difficulty",
         ),
         "parkour": ExtremeParkourTerrainCfg(
-            proportion=0.2,
+            proportion=0.15,
             apply_roughness=True,
             x_range="-0.1, 0.1+0.3*difficulty",
             y_range="0.2, 0.3+0.1*difficulty",
             stone_len="0.9 - 0.3*difficulty, 1 - 0.2*difficulty",
             incline_height="0.25*difficulty",
             last_incline_height="incline_height + 0.1 - 0.1*difficulty",
+        ),
+        "parkour_slope": ExtremeParkourSlopeTerrainCfg(
+            proportion=0.15,
+            apply_roughness=True,
+            x_range=(1.0, 2.0),
+            half_valid_width=(0.5, 1.0),
+            slope_range="-0.15 - 0.05 * difficulty, 0.15 + 0.05 * difficulty",
+            segment_width_range="0.8 + 0.2 * difficulty, 1.6 + 0.4 * difficulty",
+            noise_range=(0.01, 0.05),
         ),
         "parkour_demo": ExtremeParkourDemoTerrainCfg(
             proportion=0.0,
