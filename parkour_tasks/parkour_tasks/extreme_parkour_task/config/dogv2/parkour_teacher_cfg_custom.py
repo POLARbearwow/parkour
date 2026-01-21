@@ -127,6 +127,14 @@ class DogV2TeacherParkourEnvCfg_PLAY(DogV2TeacherParkourEnvCfg_EVAL):
         self.scene.num_envs = 16
         self.parkours.base_parkour.debug_vis = True
         self.commands.base_velocity.debug_vis = True
+        # 修改速度命令（Play模式专用）
+        # 线速度范围：默认 (0.3, 0.8)，可以修改为更慢或更快
+        # self.commands.base_velocity.ranges.lin_vel_x = (2.0, 2.0)  # 更快：0.5-1.0 m/s
+        # self.commands.base_velocity.ranges.lin_vel_x = (0.2, 0.5)  # 更慢：0.2-0.5 m/s
+        # 朝向范围：默认 (-1.6, 1.6) 弧度，可以限制转向幅度
+        # self.commands.base_velocity.ranges.heading = (-1.0, 1.0)  # 减少转向范围
+        # 重新采样时间：默认 (6.0, 6.0)，可以改为固定值或范围
+        # self.commands.base_velocity.resampling_time_range = (60.0, 60.0)  # 60秒不变换命令
         if self.scene.terrain.terrain_generator is not None:
             self.scene.terrain.terrain_generator.difficulty_range = (0.7, 1.0)
         self.events.push_by_setting_velocity = None
