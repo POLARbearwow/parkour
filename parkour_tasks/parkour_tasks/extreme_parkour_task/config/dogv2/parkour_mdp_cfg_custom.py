@@ -94,9 +94,10 @@ class StudentObservationsCfg:
             func=observations.ExtremeParkourObservations,
             params={
                 "asset_cfg": SceneEntityCfg("robot"),
-                "sensor_cfg": SceneEntityCfg(
-                    "contact_forces", body_names=".*_Foot_link"
-                ),  # 修改：匹配Foot_link
+                # "sensor_cfg": SceneEntityCfg(
+                #     "contact_forces", body_names=".*_Foot_link"
+                # ),  # 注释掉：deploy时没有contact force传感器，训练时也不使用
+                "sensor_cfg": None,  # 设置为None，不使用contact force作为observation
                 "parkour_name": "base_parkour",
                 "history_length": 10,
             },

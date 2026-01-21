@@ -30,7 +30,12 @@ class ExtremeParkourObservations(ManagerTermBase):
 
     def __init__(self, cfg: ObservationTermCfg, env: ParkourManagerBasedRLEnv):
         super().__init__(cfg, env)
-        self.contact_sensor: ContactSensor = env.scene.sensors["contact_forces"]  # type: ignore
+        # self.contact_sensor: ContactSensor = env.scene.sensors["contact_forces"]  # type: ignore
+        # 注释掉：如果sensor_cfg为None，则不使用contact sensor
+        if cfg.params.get("sensor_cfg") is not None:
+            self.contact_sensor: ContactSensor = env.scene.sensors["contact_forces"]  # type: ignore
+        else:
+            self.contact_sensor = None
         self.ray_sensor: RayCaster = env.scene.sensors["height_scanner"]  # type: ignore
         self.parkour_event: ParkourEvent = env.parkour_manager.get_term(cfg.params["parkour_name"])  # type: ignore
         self.asset: Articulation = env.scene[cfg.params["asset_cfg"].name]  # type: ignore
@@ -118,6 +123,12 @@ class ExtremeParkourObservations(ManagerTermBase):
     def _get_contact_fill(
         self,
     ):
+        # 如果没有contact sensor或sensor_cfg为None，返回零数组
+        if self.contact_sensor is None or self.sensor_cfg is None:
+            # 返回4个脚的零数组（值在[-0.5, 0.5]范围，表示无接触）
+            return torch.zeros(self.num_envs, 4, device=self.device) - 0.5
+        
+        # 原有的contact sensor逻辑
         contact_forces = self.contact_sensor.data.net_forces_w_history[:, 0, self.sensor_cfg.body_ids]  # type: ignore #(N, 4, 3)
         contact = torch.norm(contact_forces, dim=-1) > 2.0
         previous_contact_forces = self.contact_sensor.data.net_forces_w_history[:, -1, self.sensor_cfg.body_ids]  # type: ignore # N, 4, 3
