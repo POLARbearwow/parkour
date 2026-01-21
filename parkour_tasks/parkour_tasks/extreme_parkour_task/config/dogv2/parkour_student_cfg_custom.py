@@ -84,7 +84,8 @@ class DogV2StudentParkourEnvCfg_EVAL(DogV2StudentParkourEnvCfg):
         self.scene.depth_camera_usd = CAMERA_USD_CFG
         self.scene.terrain.max_init_terrain_level = None
 
-        self.observations.depth_camera.depth_cam.params['debug_vis'] = True
+        # self.observations.depth_camera.depth_cam.params['debug_vis'] = True  # 注释掉：服务器训练时不需要显示深度图
+        self.observations.depth_camera.depth_cam.params['debug_vis'] = False  # 设置为False，避免在无图形界面环境下出错
 
         self.commands.base_velocity.resampling_time_range = (60.,60.)
         self.commands.base_velocity.debug_vis = True

@@ -111,7 +111,8 @@ class StudentObservationsCfg:
                 "sensor_cfg": SceneEntityCfg("depth_camera"),
                 "resize": (58, 87),
                 "buffer_len": 2,
-                "debug_vis": True,
+                # "debug_vis": True,  # 注释掉：服务器训练时不需要显示深度图
+                "debug_vis": False,  # 设置为False，避免在无图形界面环境下出错
             },
         )
 
